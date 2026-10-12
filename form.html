@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="./form.css">
+
+</head>
+
+<body>
+
+    <div class="formbox">
+
+        <h1>26th Cafe</h1>
+        <h2>Create Your Account</h2>
+        <p>Register to continue</p>
+
+        <form>
+
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter your email">
+
+            <label>Phone Number</label>
+            <input type="text" id="phone"  placeholder="Enter your phone number">
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Create password">
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword"  placeholder="Confirm password">
+
+
+            <label>Gender</label>
+
+            <input type="radio" name="gender" class="gender">
+            Male
+            <input type="radio" name="gender" class="gender">
+            Female
+            <input type="radio" name="gender" class="gender">
+            Other
+
+            <label>Date of Birth</label>
+            <input type="date" id="dob">
+            <label>Favourite Cafe Item</label>
+
+            <select id="item">
+
+                <option>Select an item</option>
+                <option>Coffee</option>
+                <option>Tea</option>
+                <option>Cake</option>
+                <option>Sandwich</option>
+                <option>Pizza</option>
+
+            </select>
+
+            <label>Address</label>
+
+            <textarea id="address" placeholder="Enter your address"></textarea>
+
+            <p>
+                <input type="checkbox" id="terms" class="terms">
+                I agree to the Terms and Conditions
+            </p>
+            <button type="button" onclick="register()">  REGISTER </button>
+
+            <p id="message"></p>
+
+            <p>
+                Already have an account?
+                <a href="./login.html">Login</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+
+        function register() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var password =  document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+
+            if (name == "" || email == "" ||  phone == "" || password == "" ||   confirmPassword == "") {
+                document.getElementById("message").innerHTML =  "Please fill all the details";
+            }
+            else if (password != confirmPassword) {
+                document.getElementById("message").innerHTML =  "Passwords do not match";
+            }
+            else {
+                document.getElementById("message").innerHTML = "Registration Successful!";
+            }
+        }
+
+    </script>
+</body>
+</html>

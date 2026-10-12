@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
+    
+</head>
+<body>
+    <div class="login-box">
+   <pre id="a1"> <b><em>26<sup>th</sup><sub>cafe</sub></em>  </b>         <a href="./index.html"><img src="./login1.jpg" alt="" width="150px" height="150px"></a>           </pre> 
+ 
+        <h1> 26th Cafe</h1>
+        <h2>Welcome Back!!!</h2>
+        <p>Login to continue</p>
+
+        <input type="text" id="email" placeholder="Enter your email">
+
+        <input type="password" id="password" placeholder="Enter your password">
+
+        <br>
+
+        <input type="checkbox" id="remember" style="width:auto;">
+        Remember me
+
+        <p>
+            <a href="#">Forgot Password?</a>
+        </p>
+
+        <button onclick="login()">LOGIN</button>
+
+        <p id="message"></p>
+        <p>
+            New user?
+            <a href="./form.html">Create an Account</a>
+        </p>
+    </div>
+    <script>
+        function login() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            if (email == "" || password == "") {
+                document.getElementById("message").innerHTML = "Please enter email and password";
+            }
+
+            else if (email == "cafe@gmail.com" && password == "12345") {
+                document.getElementById("message").innerHTML =   "Login Successful! Welcome to 26th Cafe ";
+            }
+            else {
+                document.getElementById("message").innerHTML =   "Invalid email or password";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+ body{
+            margin: 0;
+        overflow-x: hidden;
+        }
+  *{
+    margin: 0;
+    padding: 0;
+}
+/* top heading */
+  a{
+    text-decoration-line: none;
+    color: black;
+    font-size: 13px;
+}
+#a1 a:hover{
+    color: rgb(235, 235, 214);
+ }
+    #a1{
+      background-color: rgb(241, 201, 207);
+      padding:25px;
+    
+    }
+  #a1 em{
+    font-size: 50px;
+}
+#s1 img {
+    position: absolute;
+    right: 50px;
+    top: 200px;
+    margin: 200px;
+    animation-name: myAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myAnimation {
+    0%   { right: 50px; top: 10px; }
+    25%  { right: 100px; top: 10px; }
+    50%  { right: 100px; top: 100px; }
+    75%  {  right: 50px; top:100px; }
+    100% { right: 50px; top: 10px; }
+}
+

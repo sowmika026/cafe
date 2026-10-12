@@ -1,0 +1,224 @@
+ body{
+            margin: 0;
+        overflow-x: hidden;
+        }
+  *{
+    margin: 0;
+    padding: 0;
+}
+/* top heading */
+  a{
+    text-decoration-line: none;
+    color: black;
+    font-size: 13px;
+}
+#a1 a:hover{
+    color: beige;
+ }
+        #a1{
+      background-color: rgb(241, 201, 207);
+      padding:25px;
+    }
+  #a1 em{
+    font-size: 50px;
+}
+  
+  #a2 a:hover{
+    color: #db881c;
+  }
+  
+  
+  /* main content */
+  
+ #l1 { 
+    text-align: left; 
+    font-size: 80px; 
+    margin: 100px 350px 10px 0;
+}
+
+#p1 {  
+    text-align: left;
+    margin-right: 350px;
+}
+
+.v1 { 
+    background-color: rgb(249, 222, 227); 
+    padding: 50px;
+    position: relative;
+    min-height: 70px;
+}
+
+.v1 img {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    margin: 0 ;
+}
+/* animeee */
+.v1 img {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    animation-name: myAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.v1 {
+    position: relative;
+}
+
+@keyframes myAnimation {
+    0%   { right: 50px; top: 50px; }
+    25%  { right: 100px; top: 50px; }
+    50%  { right: 100px; top: 150px; }
+    75%  {  background-image:url(./anime2.jpg) ; right: 50px; top: 150px; }
+    100% {   background-image:url(./anime2.jpg) ; right: 50px; top: 50px; }
+}
+
+.c6 { 
+    background-color: rgb(130, 128, 125); 
+    color: white; 
+}
+
+/*  final  content */
+.a3{
+    padding: 50px;
+  }
+ .a3 p,
+ .a3 label{
+    font-size: 25px;
+ }
+
+ .a3 input{
+    padding: 10px 25px;
+    margin: 10px;
+    border: solid black 2px;
+    border-radius: 5px;
+    background-color: azure;
+ }
+
+ .a4{
+    padding: 40px;
+ }
+ 
+ .a5{
+   text-align: right;
+   padding: 100px;
+ }
+
+ button:hover{
+     border: solid gray 3px;
+     background-color:rgb(251, 219, 224);
+ }
+
+ 
+
+ #s1{
+    margin-top:0px;
+    background-color: rgb(33, 32, 32);
+    text-align: center;
+    padding: 15px;
+    color: white;
+ }
+ .food{
+  margin:20px;
+ }
+
+ @media screen and (max-width: 768px) {
+
+    /* TOP HEADING */
+    #a1 {
+        padding: 15px;
+        text-align: center;
+        white-space: normal;
+        line-height: 30px;
+    }
+
+    #a1 em {
+        font-size: 30px;
+    }
+
+    #a1 a {
+        font-size: 12px;
+    }
+
+
+    /* MAIN CONTENT */
+    #l1 {
+        font-size: 45px;
+        text-align: center;
+        margin: 50px 10px 10px;
+    }
+
+    #p1 {
+        text-align: center;
+        margin: 10px;
+    }
+
+
+    /* PINK SECTION + ANIMATION */
+    .v1 {
+        padding: 30px 15px;
+        min-height: 350px;
+        overflow: hidden;
+    }
+
+    .v1 img {
+        width: 80px;
+        height: auto;
+        position: absolute;
+        right: 20px;
+        top: 100px;
+        animation-name: myAnimation;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+
+    /* FOOTER */
+    .c6 table {
+        width: 100%;
+    }
+
+    .c6 td {
+        display: grid;
+        width: 100%;
+        text-align: center;
+    }
+
+    .a3,
+    .a4,
+    .a5 {
+        padding: 30px 15px;
+    }
+
+    .a3 p,
+    .a3 label {
+        font-size: 18px;
+    }
+
+    .a5 {
+        text-align: center;
+    }
+
+
+    /* INPUT */
+    .a3 input {
+        max-width: 80%;
+    }
+
+
+    /* COPYRIGHT */
+    #s1 {
+        font-size: 12px;
+        padding: 12px;
+    }
+
+
+    /* FOOD */
+    .food {
+        margin: 10px;
+    }
+
+}

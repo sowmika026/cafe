@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8e9f2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.formbox {
+    background-color: white;
+
+    width: 400px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #7b4b6b;
+}
+
+h2 {
+    text-align: center;
+}
+
+.formbox p {
+    text-align: center;
+}
+
+label {
+    display: block;
+
+    margin-top: 12px;
+
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+
+    width: 95%;
+
+    padding: 10px;
+
+    margin-top: 5px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+}
+
+textarea {
+    height: 70px;
+}
+
+.gender {
+    width: auto;
+}
+
+.terms {
+    width: auto;
+}
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    background-color: #7b4b6b;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+#message {
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .formbox {
+        width: 85%;
+        padding: 20px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 90%;
+    }
+
+    button {
+        width: 95%;
+    }
+
+}

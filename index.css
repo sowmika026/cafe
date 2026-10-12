@@ -1,0 +1,439 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+sub{
+    color: grey;
+}
+a{
+    text-decoration-line: none;
+    color: black;
+    font-size: 13px;
+}
+a:hover{
+    color: beige;
+ }
+#a1{
+    background-color: rgb(241, 201, 207);
+    padding:25px;
+    
+}
+#a1 em{
+    font-size: 50px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.c1{
+    background-image:url(./cafe\ bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    padding:80px;
+    color: black;
+    text-transform: capitalize;
+    text-align:left;
+    line-height: 50px;
+}
+
+button{
+  padding: 10px;
+  margin: 10px;
+  border: solid black 2px;
+  background-color: beige;
+  width: 150px;
+  border-radius: 10px;
+}
+.c1 h4{
+    color: brown;
+}
+h5{
+    background-color: rgb(150, 148, 148);
+    text-align: center;
+    padding: 25px;
+}
+
+/* eat 2 section */
+
+ .c2 {
+    padding: 100px;
+    width: 90%;
+}
+
+.c2 h1,
+.c2 blockquote,
+.c2 p {
+    text-align: center;
+    width: 80%;
+    margin: 10px 5px;
+    margin-right: 200px;
+
+}
+.c2 h1,
+.c3 h1,
+.c4 h1{
+    text-shadow: 2px 2px 2px rgb(229, 118, 136);
+    color: crimson;
+}
+
+.c2 img {
+    
+    width: 600px;
+    height: 500px;
+    margin-top: -45px;
+    margin-left: 100px;
+    
+    
+}
+.c2 button{
+    margin-left: 130px;
+    border:solid black 2px;
+    padding: 10px 40px;
+}
+/* eat 3 section */
+
+
+.c3 h1,
+.c3 blockquote,
+.c3 p {
+    text-align: center;
+    width: 100%;
+    margin: 5px;
+    padding: 10px;
+    margin-left: 100px;
+}
+
+.c3 img {
+    width: 600px;
+    height: 500px;
+    margin-top: -45px;
+    margin-right:25px;
+    margin-left: 25px;
+    
+}
+.c3 button{
+    margin-left: 300px;
+    border:solid black 2px;
+    padding: 10px 40px;
+}
+
+/* EAT 4 sec */
+.c4 {
+    padding: 100px;
+    width: 90%;
+}
+
+.c4 h1,
+.c4 blockquote,
+.c4 p {
+    text-align: center;
+    width: 80%;
+    margin: 20px 5px;
+    margin-right: 200px;
+    padding: 5px;
+    
+}
+
+.c4 img {
+    
+    width: 600px;
+    height: 500px;
+    margin-top: -45px;
+    margin-left: 100px;
+    
+}
+.c4 button{
+    margin-left: 130px;
+    border:solid black 2px;
+    padding: 10px 40px;
+}
+/* bite*/
+
+.c5 h1{
+    text-align: center;
+    font-size: 100px;
+
+}
+.c5 {
+     background-color: rgb(251, 228, 231);
+    margin-top: -102px;
+}
+.c5 h4 {
+    margin:28px;
+
+}
+.c5 table{
+    text-align: center;
+    margin: 20px 500px ;
+    padding: 50px 8px ;
+}
+
+.c5 p{
+    margin-left:50px ;
+    text-align: center;
+}
+.content {
+    display: flex;
+    align-items: center;
+}
+
+#a2{
+    margin:-21px;
+    
+}
+
+.c6{
+    background-color: rgb(250, 235, 215);
+}
+.a3{
+    padding: 50px;
+  }
+ .a3 p,
+ .a3 label{
+    font-size: 25px;
+ }
+
+ .a3 input{
+    padding: 10px 25px;
+    margin: 10px;
+    border: solid black 2px;
+    border-radius: 5px;
+    background-color: azure;
+ }
+
+ .a4{
+    padding: 40px;
+ }
+ 
+ .a5{
+   text-align: right;
+   padding: 100px;
+ }
+
+ button:hover{
+     border: solid gray 3px;
+     background-color:rgb(251, 219, 224);
+ }
+
+ 
+
+ #s1{
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 15px;
+    color: white;
+ }
+  
+ /* design using gradient */
+ #s2{
+    border: solid  lavender 5px;
+    border-radius: 50%;
+    background-image:radial-gradient(rgb(255, 222, 192), white ,rgb(174, 237, 240)) ;
+    padding-left: 100px;
+    margin-left: 180px;
+}
+
+ #s3{
+    border:solid  lavender 5px;
+    border-radius: 50%;
+    background-image:radial-gradient(rgb(255, 222, 192), white ,rgb(173, 234, 175)) ;
+    padding-right: 200px;
+    margin-right: 200px;
+    
+}
+
+#s4{
+    border: solid  lavender 3px;
+    border-radius: 50%;
+    background-image:radial-gradient(rgb(255, 222, 192), white ,rgb(174, 237, 240)) ;
+    padding-left: 100px;
+    margin-left: 180px;
+    
+  
+}
+/* dropdown for menu */
+.k1{
+    position: relative;
+    white-space: normal;
+}
+ .dropdown {
+    position: absolute;
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding:0px;
+    margin: 200px;
+    margin-top: 0px;
+
+}
+
+#menubtn:hover + .dropdown,
+.dropdown:hover {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 3px;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background-color: burlywood;
+    color: black;
+}
+
+
+/* responsive to mobile */
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    #a1 {
+        padding: 15px;
+        white-space: normal;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    #a1 em {
+        font-size: 30px;
+    }
+
+    /* HOME */
+    .c1 {
+        width: auto;
+        height: auto;
+        padding: 50px 15px;
+        text-align: center;
+    }
+
+    .c1 h1 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+
+    .c1 h4
+    {
+        color: rgb(22, 25, 22);
+    }
+
+       .c1{
+        background-image: url(./cafe8.jpg);
+        color:3rgb(212, 17, 17);
+        
+    }
+
+    /* EAT - DRINK - ENJOY */
+    .c2,
+    .c3,
+    .c4 {
+        width: auto;
+        padding: 30px 10px;
+    }
+
+    .c2 td,
+    .c3 td,
+    .c4 td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .c2 img,
+    .c3 img,
+    .c4 img {
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    #s2,
+    #s3,
+    #s4 {
+        width: 80%;
+        margin: 20px auto;
+        padding: 100px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .c2 h1,
+    .c3 h1,
+    .c4 h1 {
+        font-size: 35px;
+    }
+
+    .c2 button,
+    .c3 button,
+    .c4 button { 
+        margin: 15px auto;
+        display: block;
+    }
+
+
+    .c5 {
+        margin-top: 0;
+        padding: 30px 10px;
+    }
+
+    .c5 h1 {
+        font-size: 45px;
+    }
+
+    .c5 table {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .c5 td {
+        display: block;
+        padding: 10px;
+    }
+
+    /* RESTAURANT IMAGES */
+    #a2 {
+        width: 100%;
+        margin: 0;
+    }
+
+    #a2 td {
+        display: block;
+        text-align: center;
+    }
+
+    #a2 img {
+        width: 90%;
+        height: auto;
+    }
+
+  
+    .c6 table {
+        width: 100%;
+    }
+
+    .c6 td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .a3,
+    .a4,
+    .a5 {
+        padding: 30px 15px;
+    }
+
+    .a5 {
+        text-align: center;
+    }
+
+}
+
