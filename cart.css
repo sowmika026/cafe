@@ -13,7 +13,7 @@
 a{
     text-decoration-line: none;
     color: black;
-    font-size: 13px;
+    
 }
 a:hover{
     color: rgb(255, 59, 219);
@@ -55,7 +55,4 @@ button:hover{
     border:black;
 }
 
-a{
-    margin: 10px;
-    font-size: 20px;
-}
+
