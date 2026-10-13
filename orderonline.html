@@ -8,56 +8,9 @@
 </head>
 <body>
     
-     <!-- top heading -->
-        <pre id="a1"> <b><em>26<sup>th</sup><sub>cafe</sub></em>  </b>                                                                                        <a href="./index.html">Home</a>     <a href="./thisisus.html">This Is Us</a>     <a href="./menu.html">Menu</a>   <a href="">Order Online</a>  <a href="./contactus.html">Contact Us</a>  <a href="./login.html">Log In </a><a href="./cart.html">cart(0)</a></pre> 
-
-    <!-- main content -->
-     <img src="./order2.jpg" alt="" width="1700px" height="500px">
-      <div id="s1">
-         <a href="./indehtml"><img src ="./anime3.jpg" alt=""  width="200px" height="100px" ></a>
-             </div>
-             
-             <div id="x1">
-       <h3 > Order Online</h3>
-       <p>You can order online! Browse our menu items and choose what you’d like to order from us.</p>
-       </div>
-    
-    
-       <div id="x2">
-          <P>PASTERIES</P>
-         
-      <div id="x3">
-         <p onclick="order('Cup Cake', 70)">Cup Cake  -  $70</p>
-         <p onclick="order('Croissant',100)">Croissant  -  $100</p>
-         <p onclick="order('Choclate cake',120)">Choclate Cake  -  $120</p>
-         <p onclick="order('Bubble coffee',150)">Bubble coffee  -  $150</p>
-         <p onclick="order('Pan Cake',120)">Pan cake  - 120</p>
-         <p onclick="order('Donut',100)">Donut  - $100</p>
-        
-
-      </div>
-        <a href="cart.html"> GO TO CART</a>
-
-       </div>
+<h1>its working</h1>
        
-       <div id="x4">
-         <h2> Your Order</h2>
-          <div id="cart"></div> 
-          <h3 id="total">Total: ₹0</h3> 
-          <p id="message"></p>
 
-          </div>
-           <script> 
-            
-          var total = 0; 
-          function order(name, price)
-           {
-            document.getElementById("cart").innerHTML += "<p>" + name + " - ₹" + price + "</p>"; 
-           total = total + price; 
-           document.getElementById("total").innerHTML = "Total: ₹" + total; 
-           document.getElementById("message").innerHTML = name + " added successfully! "; 
-        } 
-           </script>
 
 </body>
 </html>
