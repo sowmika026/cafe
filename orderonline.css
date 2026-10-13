@@ -6,8 +6,6 @@
     margin: 0;
     padding: 0;
 }
-
-
 /* top heading */
   a{
     text-decoration-line: none;
@@ -20,6 +18,7 @@
     #a1{
       background-color: rgb(241, 201, 207);
       padding:25px;
+    
     }
   #a1 em{
     font-size: 50px;
@@ -63,7 +62,7 @@
   color: #c51230;
 }
 #x3{
-  dispaly:grid;
+  display:grid;
   grid-template-columns: auto;
   background-color: pink;
   padding: 10px;
@@ -85,13 +84,13 @@
 #x4{
   margin: 50px;
   font-size: 30px;
+  
 }
 
-#x4 h2{
+#x4 h2,h3{
 
   color:#c51230;
 }
 
-#x4 h3{
-  color: #c51230;
-}
+
+
