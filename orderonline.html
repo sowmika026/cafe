@@ -27,37 +27,115 @@
           <P>PASTERIES</P>
          
       <div id="x3">
-         <p onclick="order('Cup Cake', 70)">Cup Cake  -  $70</p>
-         <p onclick="order('Croissant',100)">Croissant  -  $100</p>
-         <p onclick="order('Choclate cake',120)">Choclate Cake  -  $120</p>
-         <p onclick="order('Bubble coffee',150)">Bubble coffee  -  $150</p>
-         <p onclick="order('Pan Cake',120)">Pan cake  - 120</p>
-         <p onclick="order('Donut',100)">Donut  - $100</p>
-        
+
+
+         
+         <!-- <p onclick="order('Cup Cake', 70)"><img src="./m1.jpg" alt=" " width="80px" height="80px" > $70  </p>
+         <p onclick="order('Croissant',100)"><img src="./m2.jpg" alt=""width="80px" height="80px">    $100</p>
+         <p onclick="order('Choclate cake',120)"><img src="./m3.jpg" alt=""width="80px" height="80px">   $120</p>
+         <p onclick="order('Bubble coffee',150)"><img src="./m5.jpg" alt=""width="80px" height="80px">  $150</p>
+         <p onclick="order('Pan Cake',120)"><img src="./m6.jpg" alt=""width="80px" height="80px"> 120</p>
+         <p onclick="order('Donut',100)"><img src="./m7.jpg" alt=""width="80px" height="80px"> $100</p>
+         -->
+
+         <div id="x3">
+
+       <div class="food">   
+        <p>  <img src="./m1.jpg" width="80px" height="80px"> Cup Cake - ₹70</p>
+        <button onclick="order('Cup Cake', 70)">Add To Cart</button>
+    </div>
+
+    <div class="food">
+        <p>   <img src="./m2.jpg" width="80px" height="80px">    Croissant - ₹100</p>
+        <button onclick="order('Croissant', 100)">Add To Cart</button>
+    </div>
+
+    <div class="food">
+        <p>     <img src="./m3.jpg" width="80px" height="80px">  Chocolate Cake - ₹120</p>
+        <button onclick="order('Chocolate Cake', 120)">Add To Cart</button>
+    </div>
+
+    <div class="food"> 
+        <p> <img src="./m5.jpg" width="80px" height="80px">  Bubble Coffee - ₹150</p>
+        <button onclick="order('Bubble Coffee', 150)">Add To Cart</button>
+    </div>
+
+    <div class="food">
+        <p> <img src="./m6.jpg" width="80px" height="80px">  Pan Cake - ₹120</p>
+        <button onclick="order('Pan Cake', 120)">Add To Cart</button>
+    </div>
+
+    <div class="food">    
+        <p>    <img src="./m7.jpg" width="80px" height="80px"> Donut - ₹100</p>
+        <button onclick="order('Donut', 100)">Add To Cart</button>
+    </div>
+
+</div>
+
+
 
       </div>
         <a href="cart.html"> GO TO CART</a>
-
        </div>
        
-       <div id="x4">
-         <h2> Your Order</h2>
-          <div id="cart"></div> 
-          <h3 id="total">Total: ₹0</h3> 
-          <p id="message"></p>
+   
+          <div id="x4">
+            <h2>Your Order</h2>
+            <div id="cart"></div>
+            <h3 id="total">Total: ₹0</h3>
+            <p id="message"></p>
+
 
           </div>
-           <script> 
-            
-          var total = 0; 
-          function order(name, price)
-           {
-            document.getElementById("cart").innerHTML += "<p>" + name + " - ₹" + price + "</p>"; 
-           total = total + price; 
-           document.getElementById("total").innerHTML = "Total: ₹" + total; 
-           document.getElementById("message").innerHTML = name + " added successfully! "; 
-        } 
-           </script>
+   <script> 
+
+
+           var names = [];
+           var prices = [];
+           var quantities = [];
+           var count = 0;
+           var total = 0;
+              function order(name, price){
+                  var found = -1;
+                   for (var i = 0; i < count; i++){
+                     if (names[i] == name){
+                         found = i;
+                        }
+                      }
+                     if (found == -1){
+                        names[count] = name; 
+                        prices[count] = price;
+                        quantities[count] = 1;
+                        count++;
+                     }
+                     else  {
+                        quantities[found]++;
+                     }
+                     total = total + price;
+                     showCart();
+                     document.getElementById("message").innerHTML =name + " added successfully!";
+                   }
+               function showCart(){
+                  var output = "";
+                  for (var i = 0; i < count; i++){
+                  if (quantities[i] > 0){
+                     output += "<p>" + names[i] +" x " + quantities[i] + " - ₹" + (prices[i] * quantities[i]) +" <button onclick='removeFood(" + i + ")'>Remove</button></p>";
+        }
+    }
+    document.getElementById("cart").innerHTML = output;
+    document.getElementById("total").innerHTML = "Total: ₹" + total;
+}
+function removeFood(i){
+    if (quantities[i] > 0){
+        quantities[i]--;
+        total = total - prices[i];
+    }
+    showCart();
+    document.getElementById("message").innerHTML =
+    "Food removed successfully!";
+}
+
+    </script>
 
 </body>
 </html>
