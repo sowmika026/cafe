@@ -66,6 +66,7 @@
   grid-template-columns: auto auto;
   background-color: pink;
   padding: 10px;
+  margin: 30px;
   
 }
 #x3 p{
@@ -82,6 +83,19 @@
     transform: translateY(-10px);
     box-shadow: 0px 8px 15px gray;
 }
+
+#x3 button {
+  padding: 10px;
+
+  }
+
+  #x3 button:hover{
+ 
+     background-color: #c51230;
+     color: white;
+
+  }
+
 
 #x4{
   margin: 50px;
