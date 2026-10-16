@@ -76,7 +76,7 @@
 
 
 
-      </div>
+      </div >
         <a href="cart.html"> GO TO CART</a>
        </div>
        
@@ -87,8 +87,9 @@
             <h3 id="total">Total: ₹0</h3>
             <p id="message"></p>
 
-
           </div>
+
+
    <script> 
 
 
@@ -121,11 +122,11 @@
                   var output = "";
                   for (var i = 0; i < count; i++){
                   if (quantities[i] > 0){
-                     output += "<p>" + names[i] +" x " + quantities[i] + " - ₹" + (prices[i] * quantities[i]) +" <button onclick='removeFood(" + i + ")'>Remove</button></p>";
+                     output += "<p>" + names[i] +" x " + quantities[i] + " - $" + (prices[i] * quantities[i]) +" <button onclick='removeFood(" + i + ")'>Remove</button></p>";
         }
     }
     document.getElementById("cart").innerHTML = output;
-    document.getElementById("total").innerHTML = "Total: ₹" + total;
+    document.getElementById("total").innerHTML = "Total: $" + total;
 }
 function removeFood(i){
     if (quantities[i] > 0){
