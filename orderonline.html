@@ -68,7 +68,9 @@
 
 
       </div >
-        <a href="cart.html"> GO TO CART</a>
+       
+     <button onclick="gotocart()"> VIEW CART</button>
+      
        </div>
        
    
@@ -89,6 +91,13 @@
            var quantities = [];
            var count = 0;
            var total = 0;
+
+
+           function gotocart(){
+            window.location.href="cart.html";
+
+           }
+
               function order(name, price){
                   var found = -1;
                    for (var i = 0; i < count; i++){
