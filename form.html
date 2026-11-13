@@ -87,7 +87,7 @@
             var phone = document.getElementById("phone").value;
             var password =  document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
-
+            var address = document.getElementById("address").value;
 
             if (name == "" || email == "" ||  phone == "" || password == "" ||   confirmPassword == "") {
                 document.getElementById("message").innerHTML =  "Please fill all the details";
@@ -96,7 +96,28 @@
                 document.getElementById("message").innerHTML =  "Passwords do not match";
             }
             else {
-                document.getElementById("message").innerHTML = "Registration Successful!";
+                var customers = JSON.parse(localStorage.getItem("customers"))|| [];
+                var found = false;
+                for(var i = 0;i < customers.length;i++){
+                    if(customers[i].email == email){
+                        found =true;
+                    }
+                }
+                if(found == true){
+                    document.getElementById("message").innerHTML = "Email already registered";
+                }
+                else {
+                    var customer = { name :name,
+                        email :email,
+                        phone :phone,
+                        password :password,
+                        address :address
+                    };
+
+                    customers.push(customer);
+                    localStorage.setItem("customers",JSON.stringify(customers));
+                    documenr.getElementById("message").innerHTML = "Registration Successful!!";
+                }
             }
         }
 
