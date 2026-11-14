@@ -86,11 +86,15 @@
    <script> 
 
 
-           var names = [];
-           var prices = [];
-           var quantities = [];
-           var count = 0;
+           var names = JSON.parse(localStorage.getItem("names"))|| [];
+           var prices = JSON.parse(localStorage.getItem("prices"))||[];
+           var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+           var count = names.length;
            var total = 0;
+
+           for (var i = 0; i<count ;i++){
+            total = total +(prices[i] * quantities[i]);
+           }
 
 
            function gotocart(){
@@ -115,6 +119,9 @@
                         quantities[found]++;
                      }
                      total = total + price;
+                     localStorage.setItem("names",JSON.stringify(names));
+                     localStorage.setItem("prices",JSON.stringify(prices));
+                     localStorage.setItem("quantities",JSON.stringify(quantities));
                      showCart();
                      document.getElementById("message").innerHTML =name + " added successfully!";
                    }
@@ -129,13 +136,17 @@
     document.getElementById("total").innerHTML = "Total: $" + total;
 }
 function removeFood(i){
+    var name = names[i];
     if (quantities[i] > 0){
         quantities[i]--;
         total = total - prices[i];
     }
+
+    localStorage.setItem("names",JSON.stringify(names));
+    localStorage.setItem("prices",JSON.stringify(prices));
+    localStorage.setItem("quantities",JSON.stringify(quantities));
     showCart();
-    document.getElementById("message").innerHTML =
-    "Food removed successfully!";
+    document.getElementById("message").innerHTML = name +" removed successfully!";
 }
 
     </script>
