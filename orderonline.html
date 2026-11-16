@@ -69,7 +69,7 @@
 
       </div >
        
-     <button onclick="gotocart()"> VIEW CART</button>
+     
       
        </div>
        
@@ -81,7 +81,8 @@
             <p id="message"></p>
 
           </div>
-
+ 
+          <button onclick="gotocart()" style="align-items: center;  margin-right: 50px;"> VIEW CART</button> <br> <br>
 
    <script> 
 
@@ -130,25 +131,28 @@
                   for (var i = 0; i < count; i++){
                   if (quantities[i] > 0){
                      output += "<p>" + names[i] +" x " + quantities[i] + " - $" + (prices[i] * quantities[i]) +" <button onclick='removeFood(" + i + ")'>Remove</button></p>";
-        }
-    }
-    document.getElementById("cart").innerHTML = output;
-    document.getElementById("total").innerHTML = "Total: $" + total;
-}
-function removeFood(i){
-    var name = names[i];
-    if (quantities[i] > 0){
-        quantities[i]--;
-        total = total - prices[i];
-    }
+              }
+          }
+        document.getElementById("cart").innerHTML = output;
+        document.getElementById("total").innerHTML = "Total: $" + total;
+       }
+       function removeFood(i){
+        var name = names[i];
+        if (quantities[i] > 0){
+            quantities[i]--;
+            total = total - prices[i];
+         }
+         localStorage.setItem("names", JSON.stringify(names));
+         localStorage.setItem("prices", JSON.stringify(prices));
+         localStorage.setItem("quantities", JSON.stringify(quantities));
+         showCart();
 
-    localStorage.setItem("names",JSON.stringify(names));
-    localStorage.setItem("prices",JSON.stringify(prices));
-    localStorage.setItem("quantities",JSON.stringify(quantities));
-    showCart();
-    document.getElementById("message").innerHTML = name +" removed successfully!";
+    document.getElementById("message").innerHTML = name + " removed successfully!";
 }
 
+
+
+showCart();
     </script>
 
 </body>

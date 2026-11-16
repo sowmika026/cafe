@@ -31,8 +31,7 @@
         <button onclick="login()">LOGIN</button>
 
         <p id="message"></p>
-        <p>
-            New user?
+        <p> New user?
             <a href="./form.html">Create an Account</a>
         </p>
     </div>
@@ -52,12 +51,22 @@
                 found = true;
                }
             }
-            if (found == true) {
-                localStorage.setItem("loggedIn","true");
-                document.getElementById("message").innerHTML = "Login Successful! Welcome to 26th Cafe";
-                window.location.href ="./orderonline.html";
-            }
-            else {
+           if (found == true) {
+              localStorage.setItem("loggedIn", "true");
+              localStorage.setItem("currentUser", email);
+              document.getElementById("message").innerHTML ="Login Successful! Welcome to 26th Cafe";
+
+            var nextPage = localStorage.getItem("afterLogin");
+
+            if (nextPage == "checkout.html") {
+            localStorage.removeItem("afterLogin");
+            window.location.href = "./checkout.html";
+          }
+        else {
+        window.location.href = "./orderonline.html";
+        }
+    }
+        else {
                 document.getElementById("message").innerHTML =   "Invalid email or password";
             }
         }

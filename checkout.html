@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./checkout.css">
+</head>
+<body>
+    <h1>26th Cafe - CHECKOUT</h1>
+    <h2>Order Summary</h2>
+    <div id="cartItems"></div>
+    <h3 id="grandTotal">Total: $0</h3>
+    
+    <h2>Customer Details</h2>
+    <p id="customerName"></p>
+    <h3>Delivery Address</h3>
+    <textarea id="address"></textarea><br><br>
+
+    <button onclick="saveAddress()">Save Address</button>
+    <p id="message"></p>
+    
+
+    <h2>Payment Method</h2>
+
+    <input type="radio" name="payment" value="Cash on Delivery">Cash on Delivery<br>
+
+    <input type="radio" name="payment" value="GPay / UPI">GPay / UPI<br><br>
+
+    <button onclick="confirmOrder()">Confirm Order</button> <br> <br>
+
+    <a href="./orderonline.html" style="text-decoration-line: none;">Order Items</a>
+
+    <script>
+    var names = JSON.parse(localStorage.getItem("names")) || []; 
+    var prices = JSON.parse(localStorage.getItem("prices")) || [];
+    var quantities = JSON.parse(localStorage.getItem("quantities")) || []; 
+    
+    var total = 0;
+    for (var i = 0; i < names.length; i++) {
+
+    if (quantities[i] > 0) {
+        var itemTotal = prices[i] * quantities[i];
+        total = total + itemTotal;
+
+        document.getElementById("cartItems").innerHTML +="<p>" + names[i] + " x " + quantities[i] +" - $" + itemTotal + "</p>";
+    }
+}
+       document.getElementById("grandTotal").innerHTML ="Total: $" + total;
+       var customers = JSON.parse(localStorage.getItem("customers")) || [];
+       var currentUser = localStorage.getItem("currentUser");
+       
+       for (var i = 0; i < customers.length; i++) {
+
+       if (customers[i].email == currentUser) {
+        document.getElementById("customerName").innerHTML ="Customer Name: " + customers[i].name;
+
+        document.getElementById("address").value =customers[i].address;
+    }
+}
+
+</script>
+
+</body>
+</html>

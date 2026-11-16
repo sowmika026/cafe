@@ -15,9 +15,51 @@
     
 
         <h1> MY CART</h1>
+          <div id="cartItems"></div>
+            <h2 id="grandTotal">Total: $0</h2>
+            <button onclick="placeOrder()"> Place Order </button> <br><br> 
+            <a href="./orderonline.html">Order Items</a>
+            <p id ="orderMessage"></p>
+            <script>
 
-            <h2>Total: $0</h2> 
-            <button onclick="alert('Order placed successfully!')"> Place Order </button> <br><br> 
-            <a href="./orderonline.html">BACK TO ORDER</a>
+                var names = JSON.parse(localStorage.getItem("names")) || [];
+                var prices = JSON.parse(localStorage.getItem("prices")) || [];
+                var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+                var total = 0;
+                for (var i = 0; i < names.length; i++) {
+                    if (quantities[i] > 0) {
+                         var itemTotal = prices[i] * quantities[i];
+                          total = total + itemTotal;
+                          document.getElementById("cartItems").innerHTML += "<p>" + names[i] + " x " + quantities[i] +  " - $" + itemTotal + "</p>";
+                      }
+                }
+                document.getElementById("grandTotal").innerHTML ="Total: $" + total;
+
+            function placeOrder() {
+
+            var names = JSON.parse(localStorage.getItem("names")) || [];
+            var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+
+            var found = false;
+
+            for (var i = 0; i < names.length; i++) {
+            if (quantities[i] > 0) {
+            found = true;
+            }
+         }
+
+          if (found == false) {
+        document.getElementById("orderMessage").innerHTML ="Your cart is empty!";
+        }
+        else if (localStorage.getItem("loggedIn") != "true") {
+        localStorage.setItem("afterLogin", "checkout.html");
+        window.location.href = "./login.html";
+        }
+       else {
+        window.location.href = "./checkout.html";
+    }
+      }
+</script>
+          
 </body>
 </html>

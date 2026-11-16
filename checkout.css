@@ -1,0 +1,23 @@
+body {
+    background-color: antiquewhite;
+    text-align: center;
+    font-family: Arial;
+    border: 5px;
+   overflow-y: hidden;
+}
+
+h1 {
+    color: brown;
+}
+
+textarea {
+    width: 300px;
+    height: 80px;
+    border: dotted black 3px;
+}
+
+button {
+    padding: 5px;
+    background-color:  rgb(218, 121, 121);
+    border: dotted black 2px;
+}
