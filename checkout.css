@@ -3,7 +3,7 @@ body {
     text-align: center;
     font-family: Arial;
     border: 5px;
-   overflow-y: hidden;
+   overflow-x: hidden;
 }
 
 h1 {

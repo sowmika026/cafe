@@ -27,37 +27,37 @@
             <input type="text" id="email" placeholder="Enter your email">
 
             <label>Phone Number</label>
-            <input type="text" id="phone"  placeholder="Enter your phone number">
+            <input type="text" id="phone" placeholder="Enter your phone number">
 
             <label>Password</label>
             <input type="password" id="password" placeholder="Create password">
 
             <label>Confirm Password</label>
-            <input type="password" id="confirmPassword"  placeholder="Confirm password">
-
+            <input type="password" id="confirmPassword" placeholder="Confirm password">
 
             <label>Gender</label>
 
-            <input type="radio" name="gender" class="gender">
+            <input type="radio" name="gender" class="gender" value="Male">
             Male
-            <input type="radio" name="gender" class="gender">
+
+            <input type="radio" name="gender" class="gender" value="Female">
             Female
-            <input type="radio" name="gender" class="gender">
+
+            <input type="radio" name="gender" class="gender" value="Other">
             Other
 
             <label>Date of Birth</label>
             <input type="date" id="dob">
+
             <label>Favourite Cafe Item</label>
 
             <select id="item">
-
-                <option>Select an item</option>
-                <option>Coffee</option>
-                <option>Tea</option>
-                <option>Cake</option>
-                <option>Sandwich</option>
-                <option>Pizza</option>
-
+                <option value="">Select an item</option>
+                <option value="Coffee">Coffee</option>
+                <option value="Tea">Tea</option>
+                <option value="Cake">Cake</option>
+                <option value="Sandwich">Sandwich</option>
+                <option value="Pizza">Pizza</option>
             </select>
 
             <label>Address</label>
@@ -68,7 +68,8 @@
                 <input type="checkbox" id="terms" class="terms">
                 I agree to the Terms and Conditions
             </p>
-            <button type="button" onclick="register()">  REGISTER </button>
+
+            <button type="button" onclick="register()">REGISTER</button>
 
             <p id="message"></p>
 
@@ -76,51 +77,115 @@
                 Already have an account?
                 <a href="./login.html">Login</a>
             </p>
+
         </form>
+
     </div>
 
     <script>
 
         function register() {
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var phone = document.getElementById("phone").value;
-            var password =  document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
-            var address = document.getElementById("address").value;
 
-            if (name == "" || email == "" ||  phone == "" || password == "" ||   confirmPassword == "") {
-                document.getElementById("message").innerHTML =  "Please fill all the details";
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim().toLowerCase();
+            var phone = document.getElementById("phone").value.trim();
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var dob = document.getElementById("dob").value;
+            var item = document.getElementById("item").value;
+            var address = document.getElementById("address").value.trim();
+
+            var gender = "";
+
+            var genders = document.getElementsByClassName("gender");
+
+            for (var i = 0; i < genders.length; i++) {
+
+                if (genders[i].checked) {
+                    gender = genders[i].value;
+                }
+
             }
+
+            var terms = document.getElementById("terms").checked;
+
+            if (name == "" || email == "" || phone == "" ||
+                password == "" || confirmPassword == "" ||
+                gender == "" || dob == "" || item == "" ||
+                address == "") {
+
+                document.getElementById("message").innerHTML =
+                    "Please fill all the details";
+
+            }
+
             else if (password != confirmPassword) {
-                document.getElementById("message").innerHTML =  "Passwords do not match";
+
+                document.getElementById("message").innerHTML =
+                    "Passwords do not match";
+
             }
+
+            else if (terms == false) {
+
+                document.getElementById("message").innerHTML =
+                    "Please accept the Terms and Conditions";
+
+            }
+
             else {
-                var customers = JSON.parse(localStorage.getItem("customers"))|| [];
+
+                var customers = JSON.parse(localStorage.getItem("customers")) || [];
+
                 var found = false;
-                for(var i = 0;i < customers.length;i++){
-                    if(customers[i].email == email){
-                        found =true;
+
+                for (var i = 0; i < customers.length; i++) {
+
+                    if (customers[i].email.toLowerCase() == email) {
+
+                        found = true;
+
                     }
+
                 }
-                if(found == true){
-                    document.getElementById("message").innerHTML = "Email already registered";
+
+                if (found == true) {
+
+                    document.getElementById("message").innerHTML =
+                        "Email already registered";
+
                 }
+
                 else {
-                    var customer = { name :name,
-                        email :email,
-                        phone :phone,
-                        password :password,
-                        address :address
+
+                    var customer = {
+
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        password: password,
+                        gender: gender,
+                        dob: dob,
+                        item: item,
+                        address: address
+
                     };
 
                     customers.push(customer);
-                    localStorage.setItem("customers",JSON.stringify(customers));
-                    documenr.getElementById("message").innerHTML = "Registration Successful!!";
+
+                    localStorage.setItem("customers", JSON.stringify(customers));
+
+                    document.getElementById("message").innerHTML =
+                        "Registration Successful!!";
+
                 }
+
             }
+
         }
 
     </script>
+
 </body>
+
 </html>

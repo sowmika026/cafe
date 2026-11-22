@@ -3,63 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>26th Cafe - Checkout</title>
     <link rel="stylesheet" href="./checkout.css">
 </head>
-<body>
-    <h1>26th Cafe - CHECKOUT</h1>
-    <h2>Order Summary</h2>
-    <div id="cartItems"></div>
-    <h3 id="grandTotal">Total: $0</h3>
-    
-    <h2>Customer Details</h2>
-    <p id="customerName"></p>
-    <h3>Delivery Address</h3>
-    <textarea id="address"></textarea><br><br>
 
-    <button onclick="saveAddress()">Save Address</button>
-    <p id="message"></p>
-    
+<body>
+
+    <h1>26th Cafe - CHECKOUT</h1>
+
+    <h2>Order Summary</h2>
+
+    <div id="cartItems"></div>
+
+    <h3 id="grandTotal">Total: $0</h3>
+
+    <h2>Customer Details</h2>
+
+    <p id="customerName"></p>
+
 
     <h2>Payment Method</h2>
 
-    <input type="radio" name="payment" value="Cash on Delivery">Cash on Delivery<br>
+    <input type="radio" name="payment"
+    value="Cash on Delivery" onchange="showPayment()">
 
-    <input type="radio" name="payment" value="GPay / UPI">GPay / UPI<br><br>
+    Cash on Delivery
 
-    <button onclick="confirmOrder()">Confirm Order</button> <br> <br>
+    <br>
 
-    <a href="./orderonline.html" style="text-decoration-line: none;">Order Items</a>
+    <input type="radio" name="payment"
+    value="GPay / UPI" onchange="showPayment()">
+
+    GPay / UPI
+
+    <br><br>
+
+    <div id="upiSection" style="display:none;">
+
+        <h3>Scan QR Code to Pay</h3>
+
+        <img src="qr.jpeg" width="200px" height="200px">
+
+        <p>Scan the QR code using any UPI app.</p>
+
+    </div>
+
+    <br>
+
+    <button onclick="confirmOrder()">Confirm Order</button>
+
+    <p id="paymentMessage"></p>
+
+    <br>
+
+    <a href="./orderonline.html"
+    style="text-decoration-line: none;">Order Items</a>
+
 
     <script>
-    var names = JSON.parse(localStorage.getItem("names")) || []; 
-    var prices = JSON.parse(localStorage.getItem("prices")) || [];
-    var quantities = JSON.parse(localStorage.getItem("quantities")) || []; 
-    
-    var total = 0;
-    for (var i = 0; i < names.length; i++) {
 
-    if (quantities[i] > 0) {
-        var itemTotal = prices[i] * quantities[i];
-        total = total + itemTotal;
+        // DISPLAY ORDER ITEMS
 
-        document.getElementById("cartItems").innerHTML +="<p>" + names[i] + " x " + quantities[i] +" - $" + itemTotal + "</p>";
+        var names = JSON.parse(localStorage.getItem("names")) || [];
+
+        var prices = JSON.parse(localStorage.getItem("prices")) || [];
+
+        var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+
+        var total = 0;
+
+        for (var i = 0; i < names.length; i++) {
+
+            if (quantities[i] > 0) {
+
+                var itemTotal = prices[i] * quantities[i];
+
+                total = total + itemTotal;
+
+                document.getElementById("cartItems").innerHTML +=
+                "<p>" + names[i] + " x " + quantities[i] +
+                " - $" + itemTotal + "</p>";
+
+            }
+
+        }
+
+        document.getElementById("grandTotal").innerHTML =
+        "Total: $" + total;
+
+
+        // DISPLAY CUSTOMER DETAILS
+
+        var customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+        var currentUser = localStorage.getItem("currentUser");
+
+        for (var i = 0; i < customers.length; i++) {
+
+            if (customers[i].email == currentUser) {
+
+                document.getElementById("customerName").innerHTML =
+                "Customer Name: " + customers[i].name;
+
+                document.getElementById("address").value =
+                customers[i].address || "";
+
+            }
+
+        }
+
+
+        // SAVE DELIVERY ADDRESS
+
+        function saveMyAddress() {
+
+            var address = document.getElementById("address").value;
+
+            var customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+            var currentUser = localStorage.getItem("currentUser");
+
+            if (address == "") {
+
+                document.getElementById("message").innerHTML =
+                "Please enter your delivery address!";
+
+            }
+
+            else {
+
+                for (var i = 0; i < customers.length; i++) {
+
+                    if (customers[i].email == currentUser) {
+
+                        customers[i].address = address;
+
+                    }
+
+                }
+
+                localStorage.setItem("customers", JSON.stringify(customers));
+
+                document.getElementById("message").innerHTML =
+                "Address saved successfully!!!";
+
+            }
+
+        }
+
+
+        // SHOW PAYMENT OPTION
+
+        function showPayment() {
+
+            var payment = document.querySelector(
+            'input[name="payment"]:checked'
+            );
+
+            if (payment.value == "GPay / UPI") {
+
+                document.getElementById("upiSection").style.display = "block";
+
+            }
+
+            else {
+
+                document.getElementById("upiSection").style.display = "none";
+
+            }
+
+        }
+
+
+        // CONFIRM ORDER
+
+        function confirmOrder() {
+
+    var payment = document.querySelector(
+    'input[name="payment"]:checked'
+    );
+
+    if (payment == null) {
+
+        document.getElementById("paymentMessage").innerHTML =
+        "Please select a payment method!";
+
     }
-}
-       document.getElementById("grandTotal").innerHTML ="Total: $" + total;
-       var customers = JSON.parse(localStorage.getItem("customers")) || [];
-       var currentUser = localStorage.getItem("currentUser");
-       
-       for (var i = 0; i < customers.length; i++) {
 
-       if (customers[i].email == currentUser) {
-        document.getElementById("customerName").innerHTML ="Customer Name: " + customers[i].name;
+    else {
 
-        document.getElementById("address").value =customers[i].address;
+        var customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+        var currentUser = localStorage.getItem("currentUser");
+
+        var customerName = "";
+
+        var address = "";
+
+        for (var i = 0; i < customers.length; i++) {
+
+            if (customers[i].email == currentUser) {
+
+                customerName = customers[i].name;
+                address = customers[i].address;
+
+            }
+        }
+
+        localStorage.setItem("paymentMethod", payment.value);
+        localStorage.setItem("orderTotal", total);
+        localStorage.setItem("customerName", customerName);
+        localStorage.setItem("deliveryAddress", address);
+
+        window.location.href = "./ordersuccess.html";
+
     }
+
 }
 
-</script>
+
+    </script>
 
 </body>
 </html>

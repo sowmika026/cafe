@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Successful - 26th Cafe</title>
+
+    <style>
+        body {
+            background-color: antiquewhite;
+            text-align: center;
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .success-box {
+            background-color: white;
+            width: 60%;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: brown;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        button {
+            background-color: brown;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        img {
+            margin: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="success-box">
+
+        <h1>☕ 26th Cafe</h1>
+
+        <h2>🎉 YOUR ORDER IS CONFIRMED!</h2>
+
+        <p>Thank you for choosing 26th Cafe!</p>
+
+        <hr>
+
+        <h2>Customer Details</h2>
+
+        <p id="customerName"></p>
+
+        <p id="address"></p>
+
+        <hr>
+
+        <h2>Order Details</h2>
+
+        <div id="orderItems"></div>
+
+        <h3 id="total"></h3>
+
+        <hr>
+
+        <h2>Payment Details</h2>
+
+        <p id="paymentMethod"></p>
+
+        <div id="qrSection" style="display:none;">
+
+            <h3>Scan and Pay using UPI</h3>
+
+            <img src="./qr.jpeg" width="200px" height="200px">
+
+            <p>Please scan the QR code using your UPI app.</p>
+
+            <p>Thank you for ordering!</p>
+
+        </div>
+
+        <div id="codMessage" style="display:none;">
+
+            <h3>Pay when your order is delivered.</h3>
+
+        </div>
+
+        <hr>
+
+        <h2>Thank You! Visit Again! ❤️</h2>
+
+        <br>
+
+        <button onclick="continueShopping()">
+            Continue Shopping
+        </button>
+
+    </div>
+
+
+    <script>
+
+        // CUSTOMER DETAILS
+
+        document.getElementById("customerName").innerHTML =
+        "Customer Name: " + localStorage.getItem("customerName");
+
+        document.getElementById("address").innerHTML =
+        "Delivery Address: " + localStorage.getItem("deliveryAddress");
+
+
+        // DISPLAY ORDER ITEMS
+
+        var names = JSON.parse(localStorage.getItem("names")) || [];
+
+        var prices = JSON.parse(localStorage.getItem("prices")) || [];
+
+        var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+
+        var total = 0;
+
+        for (var i = 0; i < names.length; i++) {
+
+            if (quantities[i] > 0) {
+
+                var itemTotal = prices[i] * quantities[i];
+
+                total = total + itemTotal;
+
+                document.getElementById("orderItems").innerHTML +=
+                "<p>" + names[i] + " x " + quantities[i] +
+                " - $" + itemTotal + "</p>";
+
+            }
+
+        }
+
+        document.getElementById("total").innerHTML =
+        "Grand Total: $" + total;
+
+
+        // PAYMENT DETAILS
+
+        var payment = localStorage.getItem("paymentMethod");
+
+        document.getElementById("paymentMethod").innerHTML =
+        "Payment Method: " + payment;
+
+        if (payment == "GPay / UPI") {
+
+            document.getElementById("qrSection").style.display = "block";
+
+        }
+
+        else if (payment == "Cash on Delivery") {
+
+            document.getElementById("codMessage").style.display = "block";
+
+        }
+
+
+        // CONTINUE SHOPPING
+
+        function continueShopping() {
+
+            localStorage.setItem("names", JSON.stringify([]));
+
+            localStorage.setItem("prices", JSON.stringify([]));
+
+            localStorage.setItem("quantities", JSON.stringify([]));
+
+            window.location.href = "./orderonline.html";
+
+        }
+
+    </script>
+
+</body>
+</html>
