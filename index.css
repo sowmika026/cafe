@@ -85,7 +85,8 @@ sub{
 a{
     text-decoration-line: none;
     color: black;
-    font-size: 13px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 a:hover{
     color: beige;
@@ -119,7 +120,7 @@ button{
   padding: 10px;
   margin: 10px;
   border: solid black 2px;
-  background-color: beige;
+  background-color: rgb(245, 220, 244);
   width: 150px;
   border-radius: 10px;
 }

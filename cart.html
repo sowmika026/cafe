@@ -1,65 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>My Cart</title>
+
     <link rel="stylesheet" href="./cart.css">
+
 </head>
+
 <body>
 
-       <pre id="a1"> <b><em>26<sup>th</sup><sub>cafe</sub></em>  </b>                                              <a href="./index.html">Home</a>  <a href="./thisisus.html">This Is Us</a>   <a href="./menu.html">Menu</a>   <a href="./orderonline.html">Order Online</a>  <a href="./contactus.html">Contact Us</a>  <a href="./login.html">Log In  </a><a href="./cart.html">cart(0)</a></pre> 
+    <pre id="a1">
+<b><em>26<sup>th</sup><sub>cafe</sub></em></b>                                              <a href="./index.html">Home</a>  <a href="./thisisus.html">This Is Us</a>   <a href="./menu.html">Menu</a>   <a href="./orderonline.html">Order Online</a>  <a href="./contactus.html">Contact Us</a>  <a href="./login.html">Log In</a>  <a href="./cart.html" id="cartCount">cart(0)</a>
+    </pre>
 
 
+    <h1>MY CART</h1>
 
-    
+    <div id="cartItems"></div>
 
-        <h1> MY CART</h1>
-          <div id="cartItems"></div>
-            <h2 id="grandTotal">Total: $0</h2>
-            <button onclick="placeOrder()"> Place Order </button> <br><br> 
-            <a href="./orderonline.html">Order Items</a>
-            <p id ="orderMessage"></p>
-            <script>
+    <h2 id="grandTotal">Total: $0</h2>
 
-                var names = JSON.parse(localStorage.getItem("names")) || [];
-                var prices = JSON.parse(localStorage.getItem("prices")) || [];
-                var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
-                var total = 0;
-                for (var i = 0; i < names.length; i++) {
-                    if (quantities[i] > 0) {
-                         var itemTotal = prices[i] * quantities[i];
-                          total = total + itemTotal;
-                          document.getElementById("cartItems").innerHTML += "<p>" + names[i] + " x " + quantities[i] +  " - $" + itemTotal + "</p>";
-                      }
-                }
-                document.getElementById("grandTotal").innerHTML ="Total: $" + total;
+    <button onclick="placeOrder()">Place Order</button>
 
-            function placeOrder() {
+    <br><br>
+
+    <a href="./orderonline.html">Order Items</a>
+
+    <p id="orderMessage"></p>
+
+
+    <script>
+
+        var names = JSON.parse(localStorage.getItem("names")) || [];
+
+        var prices = JSON.parse(localStorage.getItem("prices")) || [];
+
+        var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+
+        var total = 0;
+
+        var count = 0;
+
+
+        // DISPLAY CART ITEMS
+
+        for (var i = 0; i < names.length; i++) {
+
+            if (quantities[i] > 0) {
+
+                var itemTotal = prices[i] * quantities[i];
+
+                total = total + itemTotal;
+
+                count = count + quantities[i];
+
+                document.getElementById("cartItems").innerHTML +=
+                    "<p>" + names[i] + " x " + quantities[i] +
+                    " - $" + itemTotal + "</p>";
+
+            }
+
+        }
+
+
+        // DISPLAY TOTAL
+
+        document.getElementById("grandTotal").innerHTML =
+            "Total: $" + total;
+
+
+        // DISPLAY CART COUNT
+
+        document.getElementById("cartCount").innerHTML =
+            "cart(" + count + ")";
+
+
+        // PLACE ORDER
+
+        function placeOrder() {
 
             var names = JSON.parse(localStorage.getItem("names")) || [];
+
             var quantities = JSON.parse(localStorage.getItem("quantities")) || [];
 
             var found = false;
 
             for (var i = 0; i < names.length; i++) {
-            if (quantities[i] > 0) {
-            found = true;
-            }
-         }
 
-          if (found == false) {
-        document.getElementById("orderMessage").innerHTML ="Your cart is empty!";
+                if (quantities[i] > 0) {
+
+                    found = true;
+
+                }
+
+            }
+
+            if (found == false) {
+
+                document.getElementById("orderMessage").innerHTML =
+                    "Your cart is empty!";
+
+            }
+
+            else if (localStorage.getItem("loggedIn") != "true") {
+
+                localStorage.setItem("afterLogin", "checkout.html");
+
+                window.location.href = "./login.html";
+
+            }
+
+            else {
+
+                window.location.href = "./checkout.html";
+
+            }
+
         }
-        else if (localStorage.getItem("loggedIn") != "true") {
-        localStorage.setItem("afterLogin", "checkout.html");
-        window.location.href = "./login.html";
-        }
-       else {
-        window.location.href = "./checkout.html";
-    }
-      }
-</script>
-          
+
+    </script>
+
 </body>
+
 </html>
